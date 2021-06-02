@@ -337,21 +337,22 @@ body {
 .arrows {
   position: relative;
   top: 27px; }
-  .arrows .slick-arrow {
+  .arrows .arrow {
     height: 55px;
     position: absolute;
     bottom: 107%;
     border: 2px solid #005BC1;
     background-color: #fff;
-    font-size: 0; }
-  .arrows .slick-prev {
+    font-size: 0;
+    cursor: pointer; }
+  .arrows .arrow--prev {
     width: 55px;
     left: -108px;
     text-align: center;
     background-image: url("../img/projects/icons/arrow_l.jpg");
     background-repeat: no-repeat;
     background-position: 50% 50%; }
-  .arrows .slick-next {
+  .arrows .arrow--next {
     width: 55px;
     right: 0;
     text-align: center;
@@ -395,54 +396,38 @@ body {
   text-transform: uppercase; }
 
 /* Слайдер */
-/* Слайдер запущен */
-/* Слайдер с точками */
-/* Ограничивающая оболочка */
-.slick-list {
-  overflow: hidden; }
-
 /* Лента слайдов */
-.slick-track {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex; }
-
-/* Слайд */
-/* Слайд активный (показывается) */
-/* Слайд основной */
-/* Слайд по центру */
-/* Клонированный слайд */
-/* Стрелка */
-/* Стрелка влево */
-/* Стрелка вправо */
-/* Стрелка не активная */
-/* Точки (булиты) */
-/* Активная точка */
-/* Элемент точки */
 /*My slider*/
 .projects-slider {
-  min-width: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  width: 540px;
   position: relative;
-  margin: 0 -15px; }
-  .projects-slider .slick-arrow {
-    height: 55px;
-    position: absolute;
-    top: 107%;
-    border: 2px solid #005BC1;
-    background-color: #fff;
-    font-size: 0; }
-  .projects-slider .slick-prev {
-    width: 55px;
-    right: 49.7%;
-    background-image: url("../img/projects/icons/arrow_l.jpg");
-    background-repeat: no-repeat;
-    background-position: 50% 50%; }
-  .projects-slider .slick-next {
-    width: 55px;
-    left: 50%;
-    background-image: url("../img/projects/icons/arrow_r.jpg");
-    background-repeat: no-repeat;
-    background-position: 50% 50%; }
+  margin: 0 -15px;
+  /*.slick-arrow {
+		height: 55px;
+		position: absolute;
+		top: 107%;
+		border: 2px solid #005BC1;
+		background-color: #fff;
+		font-size: 0;
+	}
+	.slick-prev {
+		width: 55px;
+		right: 49.7%;
+		background-image: url('../img/projects/icons/arrow_l.jpg');
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+	}
+	.slick-next {
+		width: 55px;
+		left: 50%;
+		background-image: url('../img/projects/icons/arrow_r.jpg');
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+	}*/ }
 
 .slider__item {
   margin: 0 15px; }
@@ -535,11 +520,6 @@ body {
   margin-bottom: 55px; }
 
 .catalog-heading {
-  margin-right: 47px; }
-  .catalog-heading:last-child {
-    margin-right: 0; }
-
-.heading__link {
   font-family: 'Oswald', sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -550,14 +530,16 @@ body {
   color: #343434;
   background-color: #fff;
   border: 0;
-  cursor: pointer; }
-  .heading__link:hover, .heading__link:active {
+  cursor: pointer;
+  margin-right: 47px; }
+  .catalog-heading:last-child {
+    margin-right: 0; }
+  .catalog-heading:hover, .catalog-heading:active {
     color: #005BC1;
     text-decoration: underline; }
-
-.linkActive {
-  color: #005BC1;
-  text-decoration: underline; }
+  .catalog-heading__active {
+    color: #005BC1;
+    text-decoration: underline; }
 
 .body-products {
   display: -webkit-box;
@@ -567,8 +549,13 @@ body {
   -ms-flex-pack: center;
   justify-content: center; }
 
-#productsCompulite {
+.hide {
   display: none; }
+
+.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex; }
 
 .catalog-column {
   margin-right: 30px; }

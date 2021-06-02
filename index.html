@@ -12,11 +12,9 @@
 		<meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-		<script src="js/mobileMenu.js"></script>
-		<script src="js/slick.min.js"></script>
-		<script src="js/slider.js"></script>
-		<script src="js/sliderSmall.js"></script>
-		<script src="js/toggleBlock.js"></script>
+		<!--<script src="js/slick.min.js"></script>-->
+		<!--<script src="js/slider.js"></script>
+		<script src="js/sliderSmall.js"></script>-->
 	</head>
 	<!-- Отображаемое тело страницы -->
 	<body>
@@ -64,7 +62,10 @@
 								</div>
 								<h2 class="projects__title h2--title">Наши проекты</h2>
 							</div>
-							<div class="arrows"></div>
+							<div class="arrows">
+								<div class="arrow arrow--prev"></div>
+								<div class="arrow arrow--next"></div>
+							</div>
 						</div>
 						<div class="projects-slider">
 							<div class="slider__item">
@@ -95,12 +96,8 @@
 						</div>
 						<div class="catalog-body">
 							<div class="catalog-body__headings">
-								<div class="catalog-heading">
-									<button id="showRobe" class="heading__link linkActive">Robe</button>
-								</div>
-								<div class="catalog-heading">
-									<button id="showCompilite" class="heading__link">Compulite</button>
-								</div>
+								<div class="catalog-heading catalog-heading__active">Robe</div>
+								<div class="catalog-heading">Compulite</div>
 							</div>
 							<div id="productsRobe" class="body-products">
 								<div class="catalog-column">
@@ -330,5 +327,6 @@
 				</div>
 			</footer>
 		</div>
+		<script src="js/script.js"></script>
 	</body>
 </html>

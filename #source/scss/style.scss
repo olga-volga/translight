@@ -358,15 +358,16 @@ body {
 .arrows {
 	position: relative;
 	top: 27px;
-	.slick-arrow {
+	.arrow {
 		height: 55px;
 		position: absolute;
 		bottom: 107%;
 		border: 2px solid #005BC1;
 		background-color: #fff;
 		font-size: 0;
+		cursor: pointer;
 	}
-	.slick-prev {
+	.arrow--prev {
 		width: 55px;
 		left: -108px;
 		text-align: center;
@@ -374,7 +375,7 @@ body {
 		background-repeat: no-repeat;
 		background-position: 50% 50%;
 	}
-	.slick-next {
+	.arrow--next {
 		width: 55px;
 		right: 0;
 		text-align: center;
@@ -413,52 +414,25 @@ body {
 	text-transform: uppercase;
 }
 /* Слайдер */
-.slick-slider{}
-/* Слайдер запущен */
-.slick-slider.slick-initialized{}
-/* Слайдер с точками */
-.slick-slider.slick-dotted{}
-/* Ограничивающая оболочка */
+
 .slick-list {
-	overflow: hidden;
+	//**overflow: hidden;
 	//margin-bottom: 47px;
 }
 /* Лента слайдов */
 .slick-track {
-	display: flex;
+	//**display: flex;
 }
-/* Слайд */
-.slick-slide{}
-/* Слайд активный (показывается) */
-.slick-slide.slick-active{}
-/* Слайд основной */
-.slick-slide.slick-current{}
-/* Слайд по центру */
-.slick-slide.slick-center{}
-/* Клонированный слайд */
-.slick-slide.slick-cloned{}
-/* Стрелка */
-.slick-arrow{}
-/* Стрелка влево */
-.slick-arrow.slick-prev{}
-/* Стрелка вправо */
-.slick-arrow.slick-next{}
-/* Стрелка не активная */
-.slick-arrow.slick-disabled{}
-/* Точки (булиты) */
-.slick-dots{}
-.slick-dots li{}
-/* Активная точка */
-.slick-dots li.slick-active{}
-/* Элемент точки */
-.slick-dots li button{}
+
 
 /*My slider*/
 .projects-slider {
-	min-width: 0;
+	display: flex;
+	overflow: hidden;
+	width: 540px;
 	position: relative;
 	margin: 0 -15px;
-	.slick-arrow {
+	/*.slick-arrow {
 		height: 55px;
 		position: absolute;
 		top: 107%;
@@ -479,7 +453,7 @@ body {
 		background-image: url('../img/projects/icons/arrow_r.jpg');
 		background-repeat: no-repeat;
 		background-position: 50% 50%;
-	}
+	}*/
 }
 .slider__item {
 	margin: 0 15px;
@@ -576,12 +550,6 @@ body {
 	margin-bottom: 55px;
 }
 .catalog-heading {
-	margin-right: 47px;
-	&:last-child {
-		margin-right: 0;
-	}
-}
-.heading__link {
 	font-family: 'Oswald', sans-serif;
 	font-style: normal;
 	font-weight: normal;
@@ -593,24 +561,29 @@ body {
 	background-color: #fff;
 	border: 0;
 	cursor: pointer;
-	
+	margin-right: 47px;
+	&:last-child {
+		margin-right: 0;
+	}
 	&:hover,
 	&:active {
 		color: #005BC1;
 		text-decoration: underline;
 	}
-	
-}
-.linkActive {
-	color: #005BC1;
-	text-decoration: underline;
+	&__active {
+		color: #005BC1;
+		text-decoration: underline;
+	}
 }
 .body-products {
 	display: flex;
 	justify-content: center;
 }
-#productsCompulite {
+.hide {
 	display: none;
+}
+.show {
+	display: flex;
 }
 .catalog-column {
 	margin-right: 30px;
