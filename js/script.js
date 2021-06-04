@@ -57,7 +57,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 	// Slider
 
-	const arrowParent = document.querySelector('.arrows'),
+	/*const arrowParent = document.querySelector('.arrows'),
 		  arrowPrev = arrowParent.querySelector('.arrow--prev'),
 		  arrowNext = arrowParent.querySelector('.arrow--next'),
 		  sliderItem = document.querySelectorAll('.slider__item');
@@ -73,6 +73,7 @@ window.addEventListener('DOMContentLoaded', () => {
 	function showSlide(i = 0) {
 		hideSlide();
 		sliderItem[i].style.display = 'block';
+		sliderItem[i + 1].style.display = 'block';
 	}
 
 	hideSlide();
@@ -97,6 +98,91 @@ window.addEventListener('DOMContentLoaded', () => {
 				e.target.style.opacity = '.3';
 			}
 		}
+	});*/
+
+	/*const arrowPrev = document.querySelector('.arrow--prev'),
+		  arrowNext = document.querySelector('.arrow--next'),
+		  sliderItem = document.querySelectorAll('.slider__item');
+
+	let index = 1;
+
+	showSlide(index);
+
+	function showSlide(n) {
+		console.log(n);
+		if (n > sliderItem.length) {
+			index = 1;
+			
+		}
+
+		if (n < 1) {
+			index = sliderItem.length;
+		}
+		hideSlide();
+		sliderItem[index - 1].style.display = 'block';
+	}
+
+	function hideSlide() {
+		sliderItem.forEach(item => {
+			item.style.display = 'none';
+		});
+	}
+
+	function plusSlide(n) {
+		showSlide(index += n);
+	}
+
+	arrowNext.addEventListener('click', () => {
+		plusSlide(1);
+	});
+
+	arrowPrev.addEventListener('click', () => {
+		plusSlide(-1);
+	});*/
+
+	const arrowPrev = document.querySelector('.arrow--prev'),
+		  arrowNext = document.querySelector('.arrow--next'),
+		  sliderItem = document.querySelectorAll('.slider__item'),
+		  slidesWrapper = document.querySelector('.projects-slider'),// обертка слайдера
+		  slidesField = document.querySelector('.projects-slider__inner'),// полоса со всеми слайдами
+		  slidesShownWidth = window.getComputedStyle(slidesWrapper).width;// ширина видимой части со слайдами для показа
+
+	let slideWidth,// задаем ширину каждого слайда как половину от видимой части слайдера
+		slideIndex = 1,
+		offset = 0;// величина смещения слайдов при прокрутке
+
+	if (document.documentElement.clientWidth > 991.98) {
+		slideWidth = +slidesShownWidth.slice(0, slidesShownWidth.length - 2) / 2;
+	} else {
+		slideWidth = +slidesShownWidth.slice(0, slidesShownWidth.length - 2);
+	}
+
+	slidesField.style.width = 100 * sliderItem.length + '%';// задаем ширину полосы со всеми слайдами
+
+	sliderItem.forEach(item => {
+		item.style.width = slideWidth;
+	});
+
+	arrowNext.addEventListener('click', (e) => {
+		if (offset == slideWidth * (sliderItem.length - 2)) {
+			//offset = 0;
+			e.target.style.opacity = '.3';
+		} else {
+			offset += slideWidth;
+			arrowPrev.style.opacity = '1';
+		}
+		slidesField.style.transform = `translateX(-${offset}px)`;
+	});
+
+	arrowPrev.addEventListener('click', (e) => {
+		if (offset == 0) {
+			//offset = slideWidth * (sliderItem.length - 1);
+			e.target.style.opacity = '.3';
+		} else {
+			offset -= slideWidth;
+			arrowNext.style.opacity = '1';
+		}
+		slidesField.style.transform = `translateX(-${offset}px)`;
 	});
 
 });
