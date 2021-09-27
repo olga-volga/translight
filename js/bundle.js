@@ -35,35 +35,40 @@ function menu() {
 
 /***/ }),
 
-/***/ "./js/modules/sliderBig.js":
-/*!*********************************!*\
-  !*** ./js/modules/sliderBig.js ***!
-  \*********************************/
+/***/ "./js/modules/slider.js":
+/*!******************************!*\
+  !*** ./js/modules/slider.js ***!
+  \******************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-function sliderBig() {
-	// Big Slider
+function slider({prevSelector, nextSelector, sliderItemSelector, slidesWrapperSelector, slidesFieldSelector, slidesToShow}) {
 
-	const arrowPrev = document.querySelector('.arrow--prev'),
-		  arrowNext = document.querySelector('.arrow--next'),
-		  sliderItem = document.querySelectorAll('.slider__item'),
-		  slidesWrapper = document.querySelector('.projects-slider'),// обертка слайдера
-		  slidesField = document.querySelector('.projects-slider__inner'),// полоса со всеми слайдами
-		  slidesShownWidth = window.getComputedStyle(slidesWrapper).width;// ширина видимой части со слайдами для показа
+	const arrowPrev = document.querySelector(prevSelector),
+		  arrowNext = document.querySelector(nextSelector),
+		  sliderItem = document.querySelectorAll(sliderItemSelector),
+		  slidesWrapper = document.querySelector(slidesWrapperSelector),// обертка слайдера
+		  slidesField = document.querySelector(slidesFieldSelector),// полоса со всеми слайдами
+		  slidesShownWidth = window.getComputedStyle(slidesWrapper).width,// ширина видимой части со слайдами для показа
+		  slidesNumber = slidesToShow;
 
-	let slideWidth,// задаем ширину каждого слайда как половину от видимой части слайдера
+	let slideWidth,
 		slideIndex = 1,
 		offset = 0;// величина смещения слайдов при прокрутке
 
-	if (document.documentElement.clientWidth > 991.98) {
-		slideWidth = +slidesShownWidth.slice(0, slidesShownWidth.length - 2) / 2;
+	if (slidesNumber === 2) {
+		if (document.documentElement.clientWidth > 991.98) {
+		slideWidth = +slidesShownWidth.slice(0, slidesShownWidth.length - 2) / 2;// задаем ширину каждого слайда как половину от видимой части слайдера
+		} else {
+			slideWidth = +slidesShownWidth.slice(0, slidesShownWidth.length - 2);// задаем ширину каждого слайда равной ширине видимой части слайдера
+		}
 	} else {
-		slideWidth = +slidesShownWidth.slice(0, slidesShownWidth.length - 2);
+		slideWidth = +slidesShownWidth.slice(0, slidesShownWidth.length - 2);// задаем ширину каждого слайда равной ширине видимой части слайдера
 	}
+	console.log(+slidesShownWidth.slice(0, slidesShownWidth.length - 2));
 
 	slidesField.style.width = 100 * sliderItem.length + '%';// задаем ширину полосы со всеми слайдами
 
@@ -71,91 +76,49 @@ function sliderBig() {
 		item.style.width = slideWidth;
 	});
 
-	arrowNext.addEventListener('click', (e) => {
-		if (offset == slideWidth * (sliderItem.length - 2)) {
-			//offset = 0;
-			e.target.style.opacity = '.3';
-		} else {
-			offset += slideWidth;
-			arrowPrev.style.opacity = '1';
-		}
-		slidesField.style.transform = `translateX(-${offset}px)`;
-	});
-
 	arrowPrev.addEventListener('click', (e) => {
-		if (offset == 0) {
-			//offset = slideWidth * (sliderItem.length - 1);
-			e.target.style.opacity = '.3';
-		} else {
-			offset -= slideWidth;
-			arrowNext.style.opacity = '1';
+		if (e.target.classList.contains('projects-arrow--prev')) {
+			if (offset == 0) {
+				//offset = slideWidth * (sliderItem.length - 1);
+				e.target.style.opacity = '.3';
+			} else {
+				offset -= slideWidth;
+				arrowNext.style.opacity = '1';
+			}
 		}
+		if (e.target.classList.contains('rent-arrow--prev')) {
+			if (offset == 0) {
+				offset = slideWidth * (sliderItem.length - 1);
+			} else {
+				offset -= slideWidth;
+			}
+		}
+		slidesField.style.transform = `translateX(-${offset}px)`;
+	});
+
+	arrowNext.addEventListener('click', (e) => {
+		if (e.target.classList.contains('projects-arrow--next')) {
+			if (offset == slideWidth * (sliderItem.length - 2)) {
+				//offset = 0;
+				e.target.style.opacity = '.3';
+			} else {
+				offset += slideWidth;
+				arrowPrev.style.opacity = '1';
+			}
+		}
+		if (e.target.classList.contains('rent-arrow--next')) {
+			if (offset == slideWidth * (sliderItem.length - 1)) {
+				offset = 0;
+			} else {
+				offset += slideWidth;
+			}
+		}
+		
 		slidesField.style.transform = `translateX(-${offset}px)`;
 	});
 }
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sliderBig);
-
-/***/ }),
-
-/***/ "./js/modules/sliderSmall.js":
-/*!***********************************!*\
-  !*** ./js/modules/sliderSmall.js ***!
-  \***********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-function sliderSmall() {
-	// Small Slider
-
-	const rentArrowPrev = document.querySelector('.rent-arrow--prev'),
-		  rentArrowNext = document.querySelector('.rent-arrow--next'),
-		  rentSliderItem = document.querySelectorAll('.rent-slider__item');
-
-	let index = 1;
-
-	showSlide(index);
-
-	function showSlide(n) {
-		if (n > rentSliderItem.length) {
-			index = 1;
-		}
-		if (n < 1) {
-			index = rentSliderItem.length;
-		}
-		hideSlide();
-
-		rentSliderItem[index - 1].style.display = 'block';
-
-		setTimeout(() => {
-			rentSliderItem[index - 1].style.opacity = '1';
-		}, 0);
-	}
-
-	function hideSlide() {
-		rentSliderItem.forEach(item => {
-			item.style.display = 'none';
-			item.style.opacity = '0';
-		});
-	}
-
-	function plusSlide(n) {
-		showSlide(index += n);
-	}
-
-	rentArrowNext.addEventListener('click', () => {
-		plusSlide(1);
-	});
-
-	rentArrowPrev.addEventListener('click', () => {
-		plusSlide(-1);
-	});
-}
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (sliderSmall);
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (slider);
 
 /***/ }),
 
@@ -276,21 +239,32 @@ var __webpack_exports__ = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_menu__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modules/menu */ "./js/modules/menu.js");
 /* harmony import */ var _modules_tabs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modules/tabs */ "./js/modules/tabs.js");
-/* harmony import */ var _modules_sliderBig__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/sliderBig */ "./js/modules/sliderBig.js");
-/* harmony import */ var _modules_sliderSmall__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/sliderSmall */ "./js/modules/sliderSmall.js");
-
-
-
+/* harmony import */ var _modules_slider__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/slider */ "./js/modules/slider.js");
 
 
 
 
 window.addEventListener('DOMContentLoaded', () => {
+	"use strict";
 
 	(0,_modules_menu__WEBPACK_IMPORTED_MODULE_0__.default)();
 	(0,_modules_tabs__WEBPACK_IMPORTED_MODULE_1__.default)();
-	(0,_modules_sliderBig__WEBPACK_IMPORTED_MODULE_2__.default)();
-	(0,_modules_sliderSmall__WEBPACK_IMPORTED_MODULE_3__.default)();
+	(0,_modules_slider__WEBPACK_IMPORTED_MODULE_2__.default)({
+		prevSelector: '.projects-arrow--prev',
+		nextSelector: '.projects-arrow--next',
+		sliderItemSelector: '.slider__item',
+		slidesWrapperSelector: '.projects-slider',
+		slidesFieldSelector: '.projects-slider__inner',
+		slidesToShow: 2
+	});
+	(0,_modules_slider__WEBPACK_IMPORTED_MODULE_2__.default)({
+		prevSelector: '.rent-arrow--prev',
+		nextSelector: '.rent-arrow--next',
+		sliderItemSelector: '.rent-slider__item',
+		slidesWrapperSelector: '.rent-slider',
+		slidesFieldSelector: '.rent-slider__inner',
+		slidesToShow: 1
+	});
 
 });
 })();

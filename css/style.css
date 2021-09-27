@@ -637,11 +637,6 @@ body {
       -webkit-transition: 0.5s all;
       -o-transition: 0.5s all;
       transition: 0.5s all; }
-  .rent-slider__item {
-    opacity: 0;
-    -webkit-transition: opacity 1.5s ease;
-    -o-transition: opacity 1.5s ease;
-    transition: opacity 1.5s ease; }
   .rent .slider-item__body {
     display: -webkit-box;
     display: -ms-flexbox;
