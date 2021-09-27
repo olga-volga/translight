@@ -12,12 +12,23 @@
   },
   "author": "",
   "license": "ISC",
+  "browserslist": [
+    "> 0.5%"
+  ],
   "bugs": {
     "url": "https://github.com/olga-volga/translight/issues"
   },
   "homepage": "https://github.com/olga-volga/translight#readme",
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
+    "babel-loader": "^8.2.2",
+    "core-js": "^3.18.1",
     "webpack": "^5.48.0",
     "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1"
   }
 }
