@@ -1,7 +1,9 @@
 @charset "UTF-8";
-/*Обнуление*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap");
+/*font-family: 'Open Sans', sans-serif;*/
 @import url("https://fonts.googleapis.com/css2?family=Oswald&display=swap");
+/*font-family: 'Oswald', sans-serif;*/
+/*Обнуление*/
 * {
   padding: 0;
   margin: 0;
@@ -63,8 +65,6 @@ h1, h2, h3, h4, h5, h6 {
   font-size: inherit;
   font-weight: inherit; }
 
-/*font-family: 'Open Sans', sans-serif;*/
-/*font-family: 'Oswald', sans-serif;*/
 body {
   background-color: #fff;
   font-family: 'Open Sans', sans-serif;
@@ -234,6 +234,12 @@ body {
   letter-spacing: 0.05em;
   text-transform: uppercase; }
 
+.content {
+  margin-top: -80px; }
+  @media (max-width: 780px) {
+    .content {
+      margin-top: -60px; } }
+
 /*===HEADER===*/
 .header {
   position: relative;
@@ -365,12 +371,6 @@ body {
     padding: 0 20px; }
   .header__menu {
     padding: 80px 0 20px 20px; } }
-
-.content {
-  margin-top: -80px; }
-  @media (max-width: 780px) {
-    .content {
-      margin-top: -60px; } }
 
 /*===MAIN SECTION===*/
 .main {

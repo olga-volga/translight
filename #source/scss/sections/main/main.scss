@@ -1,0 +1,61 @@
+/*===MAIN SECTION===*/
+.main {
+	background-image: url('../img/main/bg.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 0%;
+
+	&-body {
+		background-image: url('../img/main/rectangle.svg');
+		background-repeat: no-repeat;
+		padding: 282px 0 201px;
+		background-size: 499px;
+		background-position: 0px 80px;
+		&__inner {
+			max-width: 625px;
+			margin: 0 auto;
+		}
+	}
+	&__title {
+		font-family: 'Oswald', sans-serif;
+		font-style: normal;
+		font-weight: normal;
+		font-size: 48px;
+		line-height: 71px;
+		letter-spacing: 0.01em;
+		color: $light;
+		margin-bottom: 40px;
+	}
+	&__subtitle {
+		font-size: 16px;
+		line-height: 22px;
+		color: $light;
+		margin-bottom: 40px;
+	}
+	&-button {
+		display: flex;
+	}
+	&__btn {
+		width: 160px;
+		border: 2px solid #fff;
+	}
+	@media (max-width: $md2+px) {
+		&-body {
+			background-position: 0 60px;
+			padding: 230px 0 100px;
+			&__inner {
+				max-width: none;
+			}
+		}
+	}
+	@media (max-width: $md5+px) {
+		&-body {
+			padding: 190px 0 90px;
+		}
+		&__title {
+			font-size: 36px;
+			line-height: 50px;
+			margin-bottom: 30px;
+		}
+	}
+}

@@ -1,0 +1,60 @@
+/*===PROJECTS SECTION===*/
+.projects {
+	padding: 150px 0 0;
+
+	&-title-block {
+		margin-bottom: 65px;
+	}
+	/*My slider*/
+	&-slider {
+		overflow: hidden;
+		position: relative;
+		margin: 0 -15px;
+		&__inner {
+			display: flex;
+			transition: 0.5s all;
+		}
+	}
+	.slider__item {
+		margin: 0 15px;
+		img {
+			max-width: 100%;
+		}
+	}
+	@media (max-width: $md1+px) {
+		padding: 90px 0 0;
+
+		&-slider {
+			max-width: 570px;
+			margin: 0 auto;
+		}
+	}
+	@media (max-width: $md3+px) {
+		&-title-block {
+			margin-bottom: 50px;
+		}
+		&-title {
+			margin-bottom: 30px;
+		}
+	}
+	@media (max-width: $md4+px) {
+		&-slider {
+			margin: 0 -15px;
+		}
+	}
+	@media (max-width: $md5+px) {
+		&-slider {
+			margin: 0 -10px;
+		}
+		.slider__item {
+			margin: 0 10px;
+		}
+	}
+	@media (max-width: $md6+px) {
+		padding: 60px 0 0;
+
+		&-title-block {
+			margin-bottom: 40px;
+		}
+	}
+}

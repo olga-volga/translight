@@ -1,0 +1,149 @@
+//<ОСНОВНАЯ СЕТКА>
+body {
+	background-color: #fff;
+	font-family: 'Open Sans', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 14px;
+	line-height: 19px;
+	color: $main;
+}
+.wrapper {
+	max-width: 1920px;
+	margin: 0 auto;
+}
+.container {
+	max-width: $maxw+px;
+	margin: 0 auto;
+	width: 100%;
+	@media (max-width: 1200px) {
+		max-width: none;
+		padding: 0px 30px;
+	}
+	@media (max-width: $md6+px) {
+		padding: 0px 20px;
+	}
+}
+.btn {
+	display: block;
+	height: 51px;
+	font-weight: 600;
+	font-size: 16px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: $light;
+	padding: 15px 0;
+	&:hover,
+	&:active {
+		text-decoration: underline;
+	}
+}
+.title-block {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	@media (max-width: $md3+px) {
+		flex-direction: column;
+	}
+}
+.title {
+	display: flex;
+	align-items: center;
+	@media (max-width: $md5+px) {
+		flex-direction: column;
+	}
+}
+.arrows {
+	display: flex;
+	.arrow {
+		width: 55px;
+		height: 55px;
+		border: 2px solid #005BC1;
+		background-color: #fff;
+		background-repeat: no-repeat;
+		background-position: 50% 50%;
+		text-align: center;
+		font-size: 0;
+		cursor: pointer;
+	}
+	.arrow--prev {
+		background-image: url('../img/projects/icons/arrow_l.jpg');
+	}
+	.arrow--next {
+		background-image: url('../img/projects/icons/arrow_r.jpg');
+	}
+	@media (max-width: $md5+px) {
+		.arrow {
+			width: 45px;
+			height: 45px;
+		}
+	}
+}
+.title-lines {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	margin-right: 40px;
+	@media (max-width: $md4+px) {
+		margin-right: 25px;
+	}
+	@media (max-width: $md5+px) {
+		@include flexorder(2);
+		align-items: center;
+		margin-right: 0;
+	}
+}
+.line {
+	display: block;
+	height: 3px;
+	background-color: #005BC1;
+	@media (max-width: $md5+px) {
+		height: 2px;
+	}
+}
+.line__top {
+	width: 100px;
+	margin-bottom: 13px;
+	@media (max-width: $md5+px) {
+		margin-bottom: 9px;
+	}
+}
+.line__bottom {
+	width: 50px;
+}
+.h2--title {
+	position: relative;
+	font-family: 'Oswald', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 30px;
+	line-height: 44px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	@media (max-width: $md4+px) {
+		font-size: 27px;
+		line-height: 42px;
+		margin-bottom: 12px;
+	}
+	@media (max-width: $md5+px) {
+		@include flexorder(1);
+		text-align: center;
+	}
+}
+.h3--title {
+	font-family: 'Oswald', sans-serif;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 27px;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+}
+//===ОСНОВНОЙ БЛОК===//
+.content {
+	margin-top: -80px;
+	@media (max-width: $md2+px) {
+		margin-top: -60px;
+	}
+}
